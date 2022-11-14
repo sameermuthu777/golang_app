@@ -125,5 +125,5 @@ func deletecardetails(c *fiber.Ctx) error {
 	}
 
 	// Return status 200 on successful completion of the request
-	return c.SendStatus(200)
+	return c.SendString("hello bitch")
 }
