@@ -1,0 +1,40 @@
+<div class="wrapper">
+    <p class="caption">
+       Add New Car Details
+    </p>
+    
+    <form action="" method="POST">
+        <input type="text" id="Name" name="Name" placeholder="Enter name of the car">
+        <input type="int" id="year" name="year" placeholder="Enter the model of the car">
+        <input type="text" id="colour" name="Colour" placeholder="Enter the color of car">
+        <input type="int" id="price" name="Price" placeholder="Enter the Price of the car"> 
+        
+        <input type="submit"  value="Submit" class="button">
+
+</div>
+
+<script>
+    
+    // Нахождение на странице формы для заполнения
+    const form = document.querySelector("form");
+
+    // Обработка события отправки формы
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+
+        // Отправка POST-запроса с данными из формы по указанному URL на сервер
+        let response = await fetch('/car/create', {
+            method: 'POST',
+            body: new FormData(form),
+        });
+
+        // Получение результата работы (статуса ошибки)
+        let result = await response.status;
+
+        // Вывод сообщения в случае, если данные удалось добавить
+        if (result == 200) {
+            alert("Data added Succesfully");
+        }
+    };
+
+</script>

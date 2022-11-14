@@ -1,0 +1,41 @@
+<!-- Вывод данных для обновления с помощью конструкции {{ .ИМЯ }} -->
+<div class="wrapper">
+    <p class="caption">
+        Data update
+    </p>
+
+
+    <form action="" method="POST">
+        <input type="text" id="name" name="Name" placeholder="Enter the name of the Car" value="{{ .Data.Name }}">
+        <input type="text" id="year" name="year" placeholder="Enter the Model year of the car" value="{{ .Data.Year}}">
+        <input type="text" id="colour" name="Colour" placeholder="Enter the Colour" value="{{ .Data.Colour }}">
+        <input type="text" id="price" name="Price" placeholder="Enter the color of car" value="{{ .Data.Price }}">
+        <input type="submit" value="Update" class="button">
+    </form>
+</div>
+
+<script>
+    // Нахождение на странице формы для заполнения
+    const form = document.querySelector("form");
+
+    // Обработка события отправки формы
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+
+        // Отправка POST-запроса с данными из формы по указанному URL на сервер
+        let response = await fetch('/car/update/{{ .Data.Id }}', {
+            method: 'POST',
+            body: new FormData(form),
+        });
+
+        // Получение результата работы (статуса ошибки)
+        let result = await response.status;
+
+        // Вывод сообщения в случае, если данные удалось обновить
+        if (result == 200) 
+        alert('Data Updated'
+        )
+
+    };
+
+</script>

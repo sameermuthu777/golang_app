@@ -1,0 +1,21 @@
+<!-- Вывод данных о животных с помощью конструкции {{ .ИМЯ }} -->
+<div class="wrapper">
+    <p class="caption">List of All Car's</p>
+
+    {{ range .Data }}
+
+    <div class="item">
+        <p><b>name:</b> <a href="/car/{{ .Id }}">{{ .Name }}</a></p>
+        <p><b>year:</b> {{ .Year }}</p>
+        <p><b>colour:</b> {{ .Colour }}</p>
+        <p><b>price:</b> {{ .Price }}</p>
+
+
+        <div class="buttons">
+            <a href="/car/update/{{ .Id }}" class="button">Edit</a>
+            <a href="/car/delete/{{ .Id }}" class="button red">Delete</a>
+        </div>
+    </div>
+
+    {{ end }}
+</div>
